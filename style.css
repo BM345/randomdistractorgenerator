@@ -1,0 +1,24 @@
+body{
+  margin:100px;
+  font-weight: lighter;
+  font-size: 20px;
+}
+.mainbox{
+  margin:100px auto;
+  max-width: 1200px;
+}
+h1{
+  text-align: center;
+  font-weight: inherit;
+}
+input{
+ font-size: inherit;
+ font-weight: inherit;
+}
+button{
+  font-size: inherit;
+  font-weight: inherit;
+}
+.distractors{
+  font-size: 40px;
+}

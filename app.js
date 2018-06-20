@@ -3,8 +3,10 @@ var app = angular.module("RandomDistractorGenerator", []);
 app.controller("MainController", ["$scope", function MainController($scope){
 
 $scope.value = "10 m/s";
-$scope.spread = 0.2;
-  $scope.distractors = ""
+$scope.spread = 0.5;
+$scope.numberOfDistractors = 4;
+
+  $scope.distractors = [];
 
 
 $scope.randomNumberAroundValue = function(value, spread){
@@ -96,10 +98,16 @@ $scope.roundToNSignificantFigures = function (value, n) {
   $scope.generateDistractors = function () {
 
 var value2 = $scope.splitValueIntoNumberAndUnits($scope.value);
-
+var v = parseFloat( value2[0])
 var sf = parseInt( $scope.getNumberOfSignificantFigures(value2[0].toString()));
 
-$scope.distractors = $scope.roundToNSignificantFigures( $scope.randomNumberAroundValue(parseFloat( value2[0]), $scope.spread), sf) + value2[1];
+$scope.distractors = [];
+
+for (var i = 0; i < $scope.numberOfDistractors; i++){
+
+  $scope.distractors.push({"i":i,"value":  $scope.randomNumberAroundValue(v, $scope.spread).toPrecision( sf) + value2[1]});
+}
+
 
   }
 

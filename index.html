@@ -7,12 +7,18 @@
 <body ng-controller="MainController">
   <div class="mainbox">
 <h1>Random Distractor Generator</h1>
-<label>Around the value: </label>
-<input type="text" ng-model="value" />
-<label>Spread: </label>
-<input type="text" ng-model="spread" />
+<div class="inputs">
+<label for="value">Around the value: </label>
+<input type="text" name="value" id="value" ng-model="value" />
+<label for="spread">Spread: </label>
+<input type="text" name="spread" id="spread" ng-model="spread" />
+<label for="numberOfDistractors">Number of distractors:</label>
+<input type="number" name="numberOfDistractors" id="numberOfDistractors" ng-model="numberOfDistractors" />
 <button ng-click="generateDistractors()">Generate Distractors</button>
-<div class="distractors">{{distractors}}</div>
+</div>
+<div class="distractors">
+<div ng-repeat="distractor in distractors">{{distractor.value}}</div>
+</div>
 </div>
 </body>
 </html>
