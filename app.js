@@ -8,6 +8,7 @@ app.controller("MainController", ["$scope", function MainController($scope) {
   $scope.guessedAtSignificantFigures = 1;
 
   $scope.distractors = [];
+  $scope.copyText = "";
 
   $scope.randomNumberAroundValue = function(value, spread) {
     var absoluteSpread = value * spread;
@@ -85,6 +86,7 @@ app.controller("MainController", ["$scope", function MainController($scope) {
 
     $scope.guessedAtSignificantFigures = numberOfSignificantFigures;
     $scope.distractors = [];
+    $scope.copyText = "";
 
     for (var i = 0; i < $scope.numberOfDistractors; i++) {
       var n1 = $scope.randomNumberAroundValue(number, $scope.spread).toPrecision(numberOfSignificantFigures);
@@ -95,9 +97,13 @@ app.controller("MainController", ["$scope", function MainController($scope) {
         "i": i,
         "value": distractor
       });
+
+      $scope.copyText += distractor + "\n";
     }
   }
 
   $scope.generateDistractors();
+
+  new ClipboardJS(".copyButton");
 
 }]);

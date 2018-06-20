@@ -75,7 +75,7 @@ button {
   margin: 0px;
 }
 
-.generateDistractors {
+.generateDistractors, .copyButton {
   padding: 10px 20px;
   font-size: 50px;
   max-width: 300px;
@@ -91,4 +91,9 @@ button {
   font-size: 50px;
   text-align: center;
   margin: 50px;
+}
+
+.controls {
+  margin: 50px;
+  text-align: center;
 }
