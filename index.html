@@ -1,0 +1,18 @@
+<html ng-app="RandomDistractorGenerator">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js" type="text/javascript"></script>
+  <script src="app.js" type="text/javascript"></script>
+  <link href="style.css" type="text/css" rel="stylesheet" />
+</head>
+<body ng-controller="MainController">
+  <div class="mainbox">
+<h1>Random Distractor Generator</h1>
+<label>Around the value: </label>
+<input type="text" ng-model="value" />
+<label>Spread: </label>
+<input type="text" ng-model="spread" />
+<button ng-click="generateDistractors()">Generate Distractors</button>
+<div class="distractors">{{distractors}}</div>
+</div>
+</body>
+</html>
