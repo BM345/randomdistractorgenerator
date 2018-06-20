@@ -5,6 +5,7 @@ app.controller("MainController", ["$scope", function MainController($scope) {
   $scope.value = "100 m/s";
   $scope.spread = 0.5;
   $scope.numberOfDistractors = 4;
+  $scope.guessedAtSignificantFigures = 1;
 
   $scope.distractors = [];
 
@@ -15,29 +16,35 @@ app.controller("MainController", ["$scope", function MainController($scope) {
   }
 
   $scope.splitValueIntoNumberAndUnits = function(value) {
-    var p = -1;
+    var splitPoint = -1;
     var s = value.toString();
 
     for (var i = 0; i < s.length; i++) {
       var c = s[i];
 
       if ("0123456789.".indexOf(c) == -1) {
-        p = i;
+        splitPoint = i;
         break;
       }
     }
 
-    return [s.slice(0, p), s.slice(p)];
+    return [s.slice(0, splitPoint), s.slice(splitPoint)];
   }
 
   $scope.getNumberOfSignificantFigures = function(value) {
     var n = 0;
+    var deferredN = 0;
     var significantFiguresHaveStarted = false;
     var haveHadDecimalPoint = false;
     var s = value.toString();
 
     for (var i = 0; i < s.length; i++) {
       var c = s[i];
+
+      if (c == ".") {
+        haveHadDecimalPoint = true;
+        continue;
+      }
 
       if (!significantFiguresHaveStarted) {
         if ("123456789".indexOf(c) != -1) {
@@ -48,8 +55,20 @@ app.controller("MainController", ["$scope", function MainController($scope) {
       }
 
       if (significantFiguresHaveStarted) {
-        if (".".indexOf(c) == -1) {
+        if ("123456789".indexOf(c) != -1) {
+          if (deferredN > 0) {
+            n += deferredN;
+            deferredN = 0;
+          }
           n++;
+        } else if (c == "0" && haveHadDecimalPoint) {
+          if (deferredN > 0) {
+            n += deferredN;
+            deferredN = 0;
+          }
+          n++;
+        } else if (c == "0" && !haveHadDecimalPoint) {
+          deferredN++;
         }
       }
     }
@@ -64,10 +83,13 @@ app.controller("MainController", ["$scope", function MainController($scope) {
     var numberOfSignificantFigures = $scope.getNumberOfSignificantFigures(number);
     var units = numberAndUnits[1];
 
+    $scope.guessedAtSignificantFigures = numberOfSignificantFigures;
     $scope.distractors = [];
 
     for (var i = 0; i < $scope.numberOfDistractors; i++) {
-      var distractor = $scope.randomNumberAroundValue(number, $scope.spread).toPrecision(numberOfSignificantFigures) + units;
+      var n1 = $scope.randomNumberAroundValue(number, $scope.spread).toPrecision(numberOfSignificantFigures);
+      //  var n2 = numeral(n1);
+      var distractor = n1.toString() + units;
 
       $scope.distractors.push({
         "i": i,

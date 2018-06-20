@@ -24,6 +24,10 @@ h1 {
   margin: 50px 0px 100px 0px;
 }
 
+strong {
+  font-weight: normal;
+}
+
 .inputs {
   display: flex;
   flex-direction: row;
@@ -75,6 +79,12 @@ button {
   padding: 10px 20px;
   font-size: 50px;
   max-width: 300px;
+}
+
+.guessedAtSignificantFigures {
+  font-size: 20px;
+  text-align: center;
+  margin: 25px;
 }
 
 .distractors {
