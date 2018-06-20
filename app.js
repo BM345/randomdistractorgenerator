@@ -2,8 +2,8 @@ var app = angular.module("RandomDistractorGenerator", []);
 
 app.controller("MainController", ["$scope", function MainController($scope) {
 
-  $scope.value = "100 m/s";
-  $scope.spread = 0.5;
+  $scope.value = "123 m/s";
+  $scope.spread = 0.2;
   $scope.numberOfDistractors = 4;
   $scope.guessedAtSignificantFigures = 1;
 
