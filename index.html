@@ -1,24 +1,38 @@
 <html ng-app="RandomDistractorGenerator">
+
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
   <script src="app.js" type="text/javascript"></script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700" rel="stylesheet">
   <link href="style.css" type="text/css" rel="stylesheet" />
 </head>
+
 <body ng-controller="MainController">
   <div class="mainbox">
-<h1>Random Distractor Generator</h1>
-<div class="inputs">
-<label for="value">Around the value: </label>
-<input type="text" name="value" id="value" ng-model="value" />
-<label for="spread">Spread: </label>
-<input type="text" name="spread" id="spread" ng-model="spread" />
-<label for="numberOfDistractors">Number of distractors:</label>
-<input type="number" name="numberOfDistractors" id="numberOfDistractors" ng-model="numberOfDistractors" />
-<button ng-click="generateDistractors()">Generate Distractors</button>
-</div>
-<div class="distractors">
-<div ng-repeat="distractor in distractors">{{distractor.value}}</div>
-</div>
-</div>
+    <h1>Random Distractor Generator</h1>
+    <div class="inputs">
+      <div class="inputColumn">
+        <label for="value">Around the value: </label>
+        <input type="text" name="value" id="value" ng-model="value" />
+      </div>
+      <div class="inputColumn">
+        <label for="spread">Spread: </label>
+        <input type="text" name="spread" id="spread" ng-model="spread" />
+      </div>
+      <div class="inputColumn">
+        <label for="numberOfDistractors">Number of distractors:</label>
+        <input type="number" name="numberOfDistractors" id="numberOfDistractors" ng-model="numberOfDistractors" />
+      </div>
+      <div class="inputColumn">
+        <p class="fakeLabel">&nbsp;</p>
+        <button class="generateDistractors" ng-click="generateDistractors()">Go</button>
+      </div>
+    </div>
+    <div class="distractors">
+      <div ng-repeat="distractor in distractors">{{distractor.value}}</div>
+    </div>
+  </div>
 </body>
+
 </html>
