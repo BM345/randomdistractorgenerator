@@ -3,7 +3,7 @@ var app = angular.module("RandomDistractorGenerator", []);
 app.controller("MainController", ["$scope", function MainController($scope) {
 
   $scope.value = "123 m/s";
-  $scope.spread = 0.2;
+  $scope.spread = 0.3;
   $scope.numberOfDistractors = 4;
   $scope.guessedAtSignificantFigures = 1;
 
@@ -96,6 +96,18 @@ app.controller("MainController", ["$scope", function MainController($scope) {
       var n1 = parseFloat($scope.randomNumberAroundValue(number, $scope.spread).toPrecision(numberOfSignificantFigures));
       //  var n2 = numeral(n1);
       var distractor = n1.toString() + units;
+
+      var isDuplicate = false;
+
+      for (var j = 0; j < $scope.distractors.length; j++) {
+        if ($scope.distractors[j].value == distractor) {
+          isDuplicate = true;
+        }
+      }
+
+      if (isDuplicate) {
+        continue;
+      }
 
       $scope.distractors.push({
         "i": i,
