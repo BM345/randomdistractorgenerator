@@ -93,7 +93,7 @@ app.controller("MainController", ["$scope", function MainController($scope) {
     while ($scope.distractors.length < $scope.numberOfDistractors) {
       i++;
 
-      var n1 = $scope.randomNumberAroundValue(number, $scope.spread).toPrecision(numberOfSignificantFigures);
+      var n1 = parseFloat($scope.randomNumberAroundValue(number, $scope.spread).toPrecision(numberOfSignificantFigures));
       //  var n2 = numeral(n1);
       var distractor = n1.toString() + units;
 

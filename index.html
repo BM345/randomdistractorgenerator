@@ -36,7 +36,7 @@
       <div ng-repeat="distractor in distractors">{{distractor.value}}</div>
     </div>
     <div class="controls">
-      <button data-clipboard-target="#copyText" class="copyButton">Copy</button>
+      <button data-clipboard-text="{{copyText}}" class="copyButton">Copy</button>
     </div>
   </div>
 </body>
