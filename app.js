@@ -109,6 +109,10 @@ app.controller("MainController", ["$scope", function MainController($scope) {
         continue;
       }
 
+      if (i > 10) {
+        break;
+      }
+
       $scope.distractors.push({
         "i": i,
         "value": distractor
