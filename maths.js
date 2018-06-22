@@ -51,4 +51,23 @@ function getNumberOfSignificantFigures(value) {
   return n;
 }
 
-module.exports = getNumberOfSignificantFigures;
+function splitValueIntoNumberAndUnits(value) {
+  var splitPoint = -1;
+  var s = value.toString();
+
+  for (var i = 0; i < s.length; i++) {
+    var c = s[i];
+
+    if (!isAnyOf(c, "0123456789.")) {
+      splitPoint = i;
+      break;
+    }
+  }
+
+  return [s.slice(0, splitPoint), s.slice(splitPoint)];
+}
+
+module.exports = {
+  "getNumberOfSignificantFigures": getNumberOfSignificantFigures,
+  "splitValueIntoNumberAndUnits": splitValueIntoNumberAndUnits
+};

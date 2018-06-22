@@ -16,26 +16,9 @@ app.controller("MainController", ["$scope", function MainController($scope) {
     return value + 2 * absoluteSpread * Math.random() - absoluteSpread;
   }
 
-  $scope.splitValueIntoNumberAndUnits = function(value) {
-    var splitPoint = -1;
-    var s = value.toString();
-
-    for (var i = 0; i < s.length; i++) {
-      var c = s[i];
-
-      if ("0123456789.".indexOf(c) == -1) {
-        splitPoint = i;
-        break;
-      }
-    }
-
-    return [s.slice(0, splitPoint), s.slice(splitPoint)];
-  }
-
-
   $scope.generateDistractors = function() {
 
-    var numberAndUnits = $scope.splitValueIntoNumberAndUnits($scope.value);
+    var numberAndUnits = splitValueIntoNumberAndUnits($scope.value);
     var number = parseFloat(numberAndUnits[0]);
     var numberOfSignificantFigures = getNumberOfSignificantFigures(number);
     var units = numberAndUnits[1];

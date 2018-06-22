@@ -1,4 +1,6 @@
-var getNumberOfSignificantFigures = require("../maths.js");
+var a = require("../maths.js");
+var getNumberOfSignificantFigures = a["getNumberOfSignificantFigures"];
+var splitValueIntoNumberAndUnits = a["splitValueIntoNumberAndUnits"];
 
 describe("The getNumberOfSignificantFigures() function", function() {
 
@@ -136,6 +138,14 @@ describe("The getNumberOfSignificantFigures() function", function() {
 
   it("returns 1 for '0005'", function() {
     expect(getNumberOfSignificantFigures("0005")).toBe(1);
+  });
+
+  it("returns 2 for '050'", function() {
+    expect(getNumberOfSignificantFigures("050")).toBe(2);
+  });
+
+  it("returns 3 for '00500'", function() {
+    expect(getNumberOfSignificantFigures("00500")).toBe(3);
   });
 
 });
