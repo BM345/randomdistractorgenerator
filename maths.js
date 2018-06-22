@@ -1,3 +1,28 @@
+class ScientificNumber {
+  constructor(significand, base, exponent, units) {
+    this.significand = significand;
+    this.base = base;
+    this.exponent = exponent;
+    this.units = units;
+  }
+
+  toString() {
+    if (this.base == 1 || this.exponent == 0) {
+      return this.significand + " " + this.units;
+    }
+
+    return this.significand + " * " + this.base + "^" + this.exponent + " " + this.units;
+  }
+
+  toLaTeXString() {
+    if (this.base == 1 || this.exponent == 0) {
+      return this.significand + " " + this.units;
+    }
+
+    return this.significand + " \\times " + this.base + "^{" + this.exponent + "} " + this.units;
+  }
+}
+
 function isAnyOf(character, characterSet) {
   return characterSet.indexOf(character) >= 0;
 }
