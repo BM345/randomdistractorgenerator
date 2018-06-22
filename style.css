@@ -89,7 +89,7 @@ button:focus {
 }
 
 .generateDistractors, .copyButton {
-  padding: 10px 20px;
+  padding: 10px 50px;
   font-size: 50px;
   max-width: 300px;
 }
