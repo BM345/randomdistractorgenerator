@@ -64,6 +64,10 @@ function splitValueIntoNumberAndUnits(value) {
     }
   }
 
+  if (splitPoint == -1) {
+    return [s, ""];
+  }
+
   return [s.slice(0, splitPoint), s.slice(splitPoint)];
 }
 

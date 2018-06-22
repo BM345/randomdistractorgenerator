@@ -20,8 +20,12 @@ app.controller("MainController", ["$scope", function MainController($scope) {
 
     var numberAndUnits = splitValueIntoNumberAndUnits($scope.value);
     var number = parseFloat(numberAndUnits[0]);
-    var numberOfSignificantFigures = getNumberOfSignificantFigures(number);
+    var numberOfSignificantFigures = getNumberOfSignificantFigures(numberAndUnits[0]);
     var units = numberAndUnits[1];
+
+    console.log(number);
+    console.log(numberOfSignificantFigures);
+    console.log(units);
 
     $scope.guessedAtSignificantFigures = numberOfSignificantFigures;
     $scope.distractors = [];

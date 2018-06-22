@@ -29,4 +29,9 @@ describe("The splitValueIntoNumberAndUnits() function", function() {
     expect(splitValueIntoNumberAndUnits("123.456 m/s^2")[1]).toBe(" m/s^2");
   });
 
+  it("", function() {
+    expect(splitValueIntoNumberAndUnits("500")[0]).toBe("500");
+    expect(splitValueIntoNumberAndUnits("500")[1]).toBe("");
+  });
+
 });
