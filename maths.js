@@ -1,3 +1,7 @@
+function isAnyOf(character, characterSet) {
+  return characterSet.indexOf(character) >= 0;
+}
+
 function getNumberOfSignificantFigures(value) {
   var n = 0;
   var deferredN = 0;
@@ -14,7 +18,7 @@ function getNumberOfSignificantFigures(value) {
     }
 
     if (!significantFiguresHaveStarted) {
-      if ("123456789".indexOf(c) != -1) {
+      if (isAnyOf(c, "123456789")) {
         significantFiguresHaveStarted = true;
       } else {
         continue;
@@ -22,7 +26,7 @@ function getNumberOfSignificantFigures(value) {
     }
 
     if (significantFiguresHaveStarted) {
-      if ("123456789".indexOf(c) != -1) {
+      if (isAnyOf(c, "123456789")) {
         if (deferredN > 0) {
           n += deferredN;
           deferredN = 0;
@@ -38,6 +42,10 @@ function getNumberOfSignificantFigures(value) {
         deferredN++;
       }
     }
+  }
+
+  if (deferredN > 0) {
+    n += deferredN;
   }
 
   return n;

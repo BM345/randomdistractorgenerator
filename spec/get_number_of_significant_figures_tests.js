@@ -134,4 +134,8 @@ describe("The getNumberOfSignificantFigures() function", function() {
     expect(getNumberOfSignificantFigures("0.00050005")).toBe(5);
   });
 
+  it("returns 1 for '0005'", function() {
+    expect(getNumberOfSignificantFigures("0005")).toBe(1);
+  });
+
 });
