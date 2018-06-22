@@ -32,56 +32,12 @@ app.controller("MainController", ["$scope", function MainController($scope) {
     return [s.slice(0, splitPoint), s.slice(splitPoint)];
   }
 
-  $scope.getNumberOfSignificantFigures = function(value) {
-    var n = 0;
-    var deferredN = 0;
-    var significantFiguresHaveStarted = false;
-    var haveHadDecimalPoint = false;
-    var s = value.toString();
-
-    for (var i = 0; i < s.length; i++) {
-      var c = s[i];
-
-      if (c == ".") {
-        haveHadDecimalPoint = true;
-        continue;
-      }
-
-      if (!significantFiguresHaveStarted) {
-        if ("123456789".indexOf(c) != -1) {
-          significantFiguresHaveStarted = true;
-        } else {
-          continue;
-        }
-      }
-
-      if (significantFiguresHaveStarted) {
-        if ("123456789".indexOf(c) != -1) {
-          if (deferredN > 0) {
-            n += deferredN;
-            deferredN = 0;
-          }
-          n++;
-        } else if (c == "0" && haveHadDecimalPoint) {
-          if (deferredN > 0) {
-            n += deferredN;
-            deferredN = 0;
-          }
-          n++;
-        } else if (c == "0" && !haveHadDecimalPoint) {
-          deferredN++;
-        }
-      }
-    }
-
-    return n;
-  }
 
   $scope.generateDistractors = function() {
 
     var numberAndUnits = $scope.splitValueIntoNumberAndUnits($scope.value);
     var number = parseFloat(numberAndUnits[0]);
-    var numberOfSignificantFigures = $scope.getNumberOfSignificantFigures(number);
+    var numberOfSignificantFigures = getNumberOfSignificantFigures(number);
     var units = numberAndUnits[1];
 
     $scope.guessedAtSignificantFigures = numberOfSignificantFigures;
