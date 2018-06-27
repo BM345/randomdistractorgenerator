@@ -31,6 +31,8 @@
         <button class="generateDistractors" ng-click="generateDistractors()">Go</button>
       </div>
     </div>
+    <div style="padding: 50px;"><input type="checkbox" name="assumeLowest" id="assumeLowest" ng-model="assumeLowest" /><label for="assumeLowest"> Assume the lowest number of significant figures.</label> (In other words, for a number like 2200, assume that the number of significant
+      figures is 2 rather than 4.)</div>
     <div class="guessedAtSignificantFigures">Guessed that the number was given to <strong>{{guessedAtSignificantFigures}}</strong> significant figures.</div>
     <div class="distractors" id="copyText">
       <div>key = {{value}}</div>

@@ -5,6 +5,7 @@ app.controller("MainController", ["$scope", function MainController($scope) {
   $scope.value = "123 m/s";
   $scope.spread = 0.5;
   $scope.numberOfDistractors = 4;
+  $scope.assumeLowest = true;
   $scope.guessedAtSignificantFigures = 1;
 
   $scope.distractors = [];
@@ -20,7 +21,7 @@ app.controller("MainController", ["$scope", function MainController($scope) {
 
     var numberAndUnits = splitValueIntoNumberAndUnits($scope.value);
     var number = parseFloat(numberAndUnits[0]);
-    var numberOfSignificantFigures = getNumberOfSignificantFigures(numberAndUnits[0]);
+    var numberOfSignificantFigures = getNumberOfSignificantFigures(numberAndUnits[0], $scope.assumeLowest);
     var units = numberAndUnits[1];
 
     console.log(number);
@@ -36,6 +37,10 @@ app.controller("MainController", ["$scope", function MainController($scope) {
     while ($scope.distractors.length < $scope.numberOfDistractors) {
       i++;
 
+      if (i > 10) {
+        break;
+      }
+
       var n1 = parseFloat($scope.randomNumberAroundValue(number, $scope.spread).toPrecision(numberOfSignificantFigures));
       //  var n2 = numeral(n1);
       var distractor = n1.toString() + units;
@@ -50,10 +55,6 @@ app.controller("MainController", ["$scope", function MainController($scope) {
 
       if (isDuplicate) {
         continue;
-      }
-
-      if (i > 10) {
-        break;
       }
 
       $scope.distractors.push({

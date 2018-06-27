@@ -27,7 +27,7 @@ function isAnyOf(character, characterSet) {
   return characterSet.indexOf(character) >= 0;
 }
 
-function getNumberOfSignificantFigures(value) {
+function getNumberOfSignificantFigures(value, assumeLowest) {
   var n = 0;
   var deferredN = 0;
   var significantFiguresHaveStarted = false;
@@ -69,7 +69,7 @@ function getNumberOfSignificantFigures(value) {
     }
   }
 
-  if (deferredN > 0) {
+  if (deferredN > 0 && !assumeLowest) {
     n += deferredN;
   }
 
