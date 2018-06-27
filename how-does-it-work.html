@@ -1,0 +1,40 @@
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700" rel="stylesheet">
+  <link href="style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="mainbox">
+    <h1>Random Distractor Generator</h1>
+    <h2>How does it work?</h2>
+    <p>This simple web app can generate a set of distractors based on the answer key to a question. The
+      distractors are random, but the values will all be within range of the value given as the answer
+      key.
+    </p>
+    <p>When you hit 'Go', the app looks at the answer key you gave it. The first thing it does is to identify
+      which part of it is the number and which is the units. When it gives you the distractors, it puts
+      the same units on each one that were in the key.</p>
+    <p>The app then tries to figure out how many significant figures the answer key was written to - so
+      that you don't have to enter this value yourself. It's reasonably good at guessing, and it'll tell
+      you how many significant figures it thinks the number is given to just above the list of distractors
+      it generates.</p>
+    <p>There are some numbers which are ambiguous as to how many significant figures they are given - i.e.,
+      2200. This number could be given to 2, 3, or 4 significant figures (unlike a number like 2200.0,
+      which is definitely to 5). There is a checkbox on the screen which, if ticked, when the app is
+      given a number like 2200, it will assume the lower number of significant figures - in this case
+      2. If the checkbox is unticked, it will assume the higher number of significant figures - in this
+      case 4.</p>
+    <p>Once the app knows to how many significant figures the distractors should be given, it generates
+      a number of distractors. You can change how many distractors it generates using the 'number of
+      distractors' textbox. The default is 4.</p>
+    <p>The app generates distractors that are in a given range - the range extends above and below the key
+      by the amount given in the 'spread' field.</p>
+    <p>Hitting 'Go' will generate a new set of distractors. You can keep hitting 'Go' until you get a set
+      you like.</p>
+    <p>You can copy the set of distractors the app gives you by hitting the 'Copy' button.</p>
+  </div>
+</body>
+
+</html>
