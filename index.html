@@ -13,6 +13,7 @@
 <body ng-controller="MainController">
   <div class="mainbox">
     <h1>Random Distractor Generator</h1>
+    <p class="howlink"><a href="how-does-this-work.html" title="How does this work?">How does this work?</a></p>
     <div class="inputs">
       <div class="inputColumn">
         <label for="value">Around the value: </label>
@@ -24,16 +25,19 @@
       </div>
       <div class="inputColumn">
         <label for="numberOfDistractors">Number of distractors:</label>
-        <input type="number" name="numberOfDistractors" id="numberOfDistractors" ng-model="numberOfDistractors" onclick="this.select();" />
+        <input type="number" name="numberOfDistractors" id="numberOfDistractors" ng-model="numberOfDistractors"
+          onclick="this.select();" />
       </div>
       <div class="inputColumn">
         <p class="fakeLabel">&nbsp;</p>
         <button class="generateDistractors" ng-click="generateDistractors()">Go</button>
       </div>
     </div>
-    <div style="padding: 50px;"><input type="checkbox" name="assumeLowest" id="assumeLowest" ng-model="assumeLowest" /><label for="assumeLowest"> Assume the lowest number of significant figures.</label> (In other words, for a number like 2200, assume that the number of significant
-      figures is 2 rather than 4.)</div>
-    <div class="guessedAtSignificantFigures">Guessed that the number was given to <strong>{{guessedAtSignificantFigures}}</strong> significant figures.</div>
+    <div style="padding: 50px;"><input type="checkbox" name="assumeLowest" id="assumeLowest" ng-model="assumeLowest" /><label for="assumeLowest"> Assume the lowest number of significant figures.</label>      (In other words, for a number like 2200, assume that the number of significant figures is 2 rather
+      than 4.)</div>
+    <div class="guessedAtSignificantFigures">Guessed that the number was given to <strong>{{guessedAtSignificantFigures}}</strong> significant
+      figures.
+    </div>
     <div class="distractors" id="copyText">
       <div>key = {{value}}</div>
       <div ng-repeat="distractor in distractors">{{distractor.value}}</div>
